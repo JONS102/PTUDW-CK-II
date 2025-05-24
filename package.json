@@ -1,0 +1,27 @@
+{
+  "name": "ptudw-ck-ii",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/JONS102/PTUDW-CK-II#readme",
+  "bugs": {
+    "url": "https://github.com/JONS102/PTUDW-CK-II/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JONS102/PTUDW-CK-II.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "pg": "^8.16.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.7"
+  }
+}

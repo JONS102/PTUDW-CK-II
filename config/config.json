@@ -1,0 +1,26 @@
+{
+    "development": {
+        "username": "postgres",
+        "password": "postgres",
+        "database": "CookingRecipeDB",
+        "host": "localhost",
+        "dialect": "postgres"
+    },
+    "test": {
+        "username": "postgres",
+        "password": "postgres",
+        "database": "CookingRecipeDB",
+        "host": "localhost",
+        "dialect": "postgres"
+    },
+    "production": {
+        "username": "pctpokyx",
+        "password": "9PL3GatqNjoVJXKyWT3RBhsr5ZNvLpGN",
+        "database": "pctpokyx",
+        "host": "mahmud.db.elephantsql.com",
+        "dialect": "postgres",
+        "dialectOptions": {
+            "ssl": true
+        }
+    }
+}
