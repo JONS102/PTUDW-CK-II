@@ -30,5 +30,13 @@ controller.getById = (id) => {
     })
 };
 
-controller.getAll = () => {};
+controller.getAll = () => {
+    return models.Recipe.findAll({ // hiển thị tóm tắt
+        include: [{
+            model: models.Ingredient,
+            as: 'ingredients',
+            limit: 3
+        }, ]
+    });
+};
 module.exports = controller;
