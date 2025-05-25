@@ -6,7 +6,8 @@ const { engine } = require('express-handlebars');
 app.engine('hbs', engine({
     extname: '.hbs',
     defaultLayout: 'layout',
-    layoutsDir: __dirname + '/views/layouts'
+    layoutsDir: __dirname + '/views/layouts',
+    runtimeOptions: { allowProtoProperties: true } // cho phép sử dụng các thuộc tính trong handlebars
 }));
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
