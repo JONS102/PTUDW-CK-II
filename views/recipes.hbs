@@ -9,12 +9,10 @@
 									<div>
 									<h3><a href="/recipes/{{id}}">{{title}}</a></h3>
 									<div>
-										<p>
-										{{summary}}
-										</p>
+										<p>{{summary}}</p>
 										<ul>
-											{{#each ingredients}}
-										<li>{{quantity}} {{title}}</li>
+											{{#each Ingredients}}
+												<li>{{quantity}} {{title}}</li>
 											{{/each}}
 										</ul>
 									</div>
@@ -25,9 +23,7 @@
 								<a href="/recipes/{{id}}"><img src="{{smallImagePath}}" alt="Image"></a>
 								<div>
 									<h3><a href="/recipes/{{id}}">{{title}}</a></h3>
-									<p>
-										{{summary}}
-									</p>
+									<p>{{summary}}</p>
 								</div>
 							</li>
 							<!--Kết quả hiện ra tìm kiếm li-->

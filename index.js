@@ -7,7 +7,9 @@ app.engine('hbs', engine({
     extname: '.hbs',
     defaultLayout: 'layout',
     layoutsDir: __dirname + '/views/layouts',
-    runtimeOptions: { allowProtoProperties: true } // cho phép sử dụng các thuộc tính trong handlebars
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true
+    } // cho phép sử dụng các thuộc tính trong handlebars
 }));
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
@@ -24,11 +26,9 @@ app.set('view engine', 'hbs');
 app.get('/', (req, res) => {
     res.render('index');
 });
-app.use('/recipes', require('./routes/recipeRoute')); // khi yêu cầu recipes, chuyển tới route
-
-
+app.use('/recipes', require('./routes/recipeRoute')); // Đã đủ, không cần app.get('/recipes', ...) nữa
 
 app.set('port', process.env.PORT || 3000);
-app.listen(app.get(('port')), () => {
+app.listen(app.get('port'), () => {
     console.log(`Server running on port ${app.get('port')}`);
 });

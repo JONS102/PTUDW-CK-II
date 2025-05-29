@@ -6,37 +6,33 @@ controller.search = (keyword) => {
     return models.Recipe.findAll({
         [Op.or]: {
             title: {
-                [Op.like]: `%${keyword}%`
+                [Op.iLike]: `%${keyword}%`
             },
             description: {
-                [Op.like]: `%${keyword}%`
+                [Op.iLike]: `%${keyword}%`
             }
         }
     });
 };
 controller.getById = (id) => {
     return models.Recipe.findOne({
-        where: {
-            id: id
-        },
+        where: { id: id },
         include: [{
-            models: models.Ingredient,
-            as: 'ingredients'
-        }, {
-            m2odels: models.Direction,
-            as: 'Directions',
-            order: ['order']
-        }]
-    })
+                model: models.Ingredient, // đúng là model, không phải models
+                as: 'Ingredients'
+            },
+            {
+                model: models.Direction, // đúng là model, không phải m2odels
+                as: 'Directions',
+                order: ['order']
+            }
+        ]
+    });
 };
 
 controller.getAll = () => {
-    return models.Recipe.findAll({ // hiển thị tóm tắt
-        include: [{
-            model: models.Ingredient,
-            as: 'ingredients',
-            limit: 3
-        }, ]
+    return models.Recipe.findAll({
+        raw: true // hoặc .then(rs => rs.map(r => r.get({ plain: true })))
     });
 };
 module.exports = controller;

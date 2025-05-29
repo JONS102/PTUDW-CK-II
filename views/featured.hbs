@@ -1,25 +1,24 @@
-
-			<div class="body">
+<div class="body">
 				<div id="content">
 					<div>
-                        {{with recipe}}
+                        {{#with recipe}}
 						<div>
 							<h3>{{title}}</h3>
 							<p>
 								{{description}}
 							</p>
-							<a href="/"><img src="{{bigImagepath}}" alt="Image"></a>
+							<a href="/"><img src="{{bigImagePath}}" alt="Image"></a>
 							<h5>INGREDIENTS</h5>
 							<ol class="ingredients">
-                                {{#each ingredients}}
+                                {{#each Ingredients}}
 								<li>
-									{{quantity}} {{title}} This is just a place holder
+									{{quantity}} {{title}}
 								</li>
 								{{/each}}
 							</ol>
 							<h5>DIRECTIONS</h5>
 							<ol class="directions">
-                                {{#each directions}}
+                                {{#each Directions}}
 								<li>
 									{{description}}
 								</li>
@@ -30,4 +29,3 @@
 					</div>
 				</div>
 			</div>
-		

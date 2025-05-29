@@ -1,38 +1,35 @@
 const express = require('express');
 const route = express.Router();
 const controller = require('../controllers/recipeControllers');
+let models = require('../models'); // PHẢI có dòng này ở đầu file
+
+controller.getAll = () => {
+    return models.Recipe.findAll().then(rs => rs.map(r => r.get({ plain: true })));
+};
+
+// ... các hàm khác
+module.exports = controller;
 
 route.get('/', (req, res) => {
     let keyword = req.query.keyword;
-    console.log(keyword);
-    //kiểm tra xem có từ khóa tìm kiếm hay không
-    if (keyword != "" || keyword != undefined) {
-        controller.getAll().
-        then(recipes => {
-            recipes.forEach((item, index) => {
-                item.order = index % 2; // phân chia công thức thành 2 cột
-            });
-            res.locals.recipes = recipes;
-            res.render('recipes'); // hiển thị các công thức tìm kiếm được
+    if (keyword == undefined) {
+        controller.getAll().then(recipes => {
+            res.render('recipes', { recipes });
         });
-    } else { // nếu không có từ khóa tìm kiếm thì lấy tất cả các công thức
+    } else {
         controller.search(keyword)
-            .then(recipes => {
-                recipes.forEach((item, index) => {
-                    item.order = index % 2;
-                });
-                res.locals.recipes = recipes;
-                res.render('recipes');
+            .then(results => {
+                res.render('recipes', { recipes: results }); // Truyền trực tiếp biến recipes
             });
     }
-
 });
 
 route.get('/:id', (req, res) => {
     let id = req.params.id;
-    controller.getById(id).then(recipe => {
-        res.locals.recipe = recipe;
-        res.render('featured');
-    })
+    controller.getById(id)
+        .then(recipe => {
+            res.locals.recipe = recipe;
+            res.render('featured');
+        })
 });
 module.exports = route;
